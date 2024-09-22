@@ -1,6 +1,6 @@
-# Copied as a template for spinning up a basic stack for learning purposes, from
+# My easy ELK stack, copied from
 - https://github.com/deviantony/docker-elk
-- 
+
 
 
 # Elastic stack (ELK) on Docker
