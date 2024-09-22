@@ -3,14 +3,17 @@
 
 # to enable ssh on the elasticsearch container
 - docker exec --user root  -it docker-elk_elasticsearch_1 bash
-- apt-get clean
-- apt-get update
-- apt-get install openssh-server
-- adduser student
-- usermod -aG root student
-- systemctl enable ssh
-- service ssh start
-
+``` 
+apt-get clean
+apt-get update
+apt-get install openssh-server
+adduser student
+usermod -aG root student
+systemctl enable ssh
+service ssh start
+``` 
+- exit
+- ssh student@localhost -p 9420
 
 # Elastic stack (ELK) on Docker
 
