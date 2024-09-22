@@ -1,6 +1,15 @@
 # My easy ELK stack, copied from
 - https://github.com/deviantony/docker-elk
 
+# to enable ssh on the elasticsearch container
+- docker exec --user root  -it docker-elk_elasticsearch_1 bash
+- apt-get clean
+- apt-get update
+- apt-get install openssh-server
+- adduser student
+- usermod -aG root student
+- systemctl enable ssh
+- service ssh start
 
 
 # Elastic stack (ELK) on Docker
