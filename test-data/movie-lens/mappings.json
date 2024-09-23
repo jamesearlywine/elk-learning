@@ -1,0 +1,18 @@
+{
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "title": {
+          "type": "text", "analyzer": "english"
+      },
+      "year": {
+          "type": "date"
+      },
+      "genre": {
+          "type": "keyword"
+      }
+    }
+  }
+}
