@@ -8,7 +8,7 @@
           "type": "text", "analyzer": "english"
       },
       "year": {
-          "type": "date"
+          "type": "text"
       },
       "genre": {
           "type": "keyword"
