@@ -1,0 +1,12 @@
+{
+  "app": "npx tsx stacks/cdk.ts",
+  "watch": {
+    "include": [
+      "stacks/serverless-opensearch",
+      "stacks/provisioned-opensearch"
+    ]
+  },
+  "context": {
+    "@aws-cdk/core:newStyleStackSynthesis": true
+  }
+}

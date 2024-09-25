@@ -1,0 +1,20 @@
+{
+  "version": "38.0.1",
+  "files": {
+    "df066f5454a4903f6bf61a358d3808947767d03f54ea85195c1296bf1584520e": {
+      "source": {
+        "path": "ServerlessOpenSearchStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "546515125053-us-east-2": {
+          "bucketName": "cdk-hnb659fds-assets-546515125053-us-east-2",
+          "objectKey": "df066f5454a4903f6bf61a358d3808947767d03f54ea85195c1296bf1584520e.json",
+          "region": "us-east-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::546515125053:role/cdk-hnb659fds-file-publishing-role-546515125053-us-east-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

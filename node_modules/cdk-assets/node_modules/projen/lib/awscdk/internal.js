@@ -1,0 +1,42 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TYPESCRIPT_LAMBDA_EXTENSION_EXT = exports.TYPESCRIPT_EDGE_LAMBDA_EXT = exports.TYPESCRIPT_LAMBDA_EXT = exports.FEATURE_FLAGS = void 0;
+exports.convertToPosixPath = convertToPosixPath;
+const path_1 = require("path");
+/**
+ * Feature flags as of v1.130.0
+ */
+exports.FEATURE_FLAGS = [
+    "aws-cdk:enableDiffNoFail",
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId",
+    "@aws-cdk/core:enableStackNameDuplicates",
+    "@aws-cdk/core:stackRelativeExports",
+    "@aws-cdk/aws-ecr-assets:dockerIgnoreSupport",
+    "@aws-cdk/aws-secretsmanager:parseOwnedSecretName",
+    "@aws-cdk/aws-kms:defaultKeyPolicies",
+    "@aws-cdk/aws-s3:grantWriteWithoutAcl",
+    "@aws-cdk/aws-ecs-patterns:removeDefaultDesiredCount",
+    "@aws-cdk/aws-rds:lowercaseDbIdentifier",
+    "@aws-cdk/aws-efs:defaultEncryptionAtRest",
+    "@aws-cdk/aws-lambda:recognizeVersionProps",
+    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021",
+];
+/**
+ * Suffix for AWS Lambda handlers.
+ */
+exports.TYPESCRIPT_LAMBDA_EXT = ".lambda.ts";
+/**
+ * Suffix for AWS Edge Lambda handlers.
+ */
+exports.TYPESCRIPT_EDGE_LAMBDA_EXT = ".edge-lambda.ts";
+/**
+ * Suffix for AWS Lambda Extensions.
+ */
+exports.TYPESCRIPT_LAMBDA_EXTENSION_EXT = ".lambda-extension.ts";
+/**
+ * Converts the given path string to posix if it wasn't already.
+ */
+function convertToPosixPath(p) {
+    return p.split(path_1.sep).join(path_1.posix.sep);
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW50ZXJuYWwuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvYXdzY2RrL2ludGVybmFsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQXVDQSxnREFFQztBQXpDRCwrQkFBa0M7QUFFbEM7O0dBRUc7QUFDVSxRQUFBLGFBQWEsR0FBRztJQUMzQiwwQkFBMEI7SUFDMUIsd0RBQXdEO0lBQ3hELHlDQUF5QztJQUN6QyxvQ0FBb0M7SUFDcEMsNkNBQTZDO0lBQzdDLGtEQUFrRDtJQUNsRCxxQ0FBcUM7SUFDckMsc0NBQXNDO0lBQ3RDLHFEQUFxRDtJQUNyRCx3Q0FBd0M7SUFDeEMsMENBQTBDO0lBQzFDLDJDQUEyQztJQUMzQywyREFBMkQ7Q0FDNUQsQ0FBQztBQUVGOztHQUVHO0FBQ1UsUUFBQSxxQkFBcUIsR0FBRyxZQUFZLENBQUM7QUFFbEQ7O0dBRUc7QUFDVSxRQUFBLDBCQUEwQixHQUFHLGlCQUFpQixDQUFDO0FBRTVEOztHQUVHO0FBQ1UsUUFBQSwrQkFBK0IsR0FBRyxzQkFBc0IsQ0FBQztBQUV0RTs7R0FFRztBQUNILFNBQWdCLGtCQUFrQixDQUFDLENBQVM7SUFDMUMsT0FBTyxDQUFDLENBQUMsS0FBSyxDQUFDLFVBQUcsQ0FBQyxDQUFDLElBQUksQ0FBQyxZQUFLLENBQUMsR0FBRyxDQUFDLENBQUM7QUFDdEMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHNlcCwgcG9zaXggfSBmcm9tIFwicGF0aFwiO1xuXG4vKipcbiAqIEZlYXR1cmUgZmxhZ3MgYXMgb2YgdjEuMTMwLjBcbiAqL1xuZXhwb3J0IGNvbnN0IEZFQVRVUkVfRkxBR1MgPSBbXG4gIFwiYXdzLWNkazplbmFibGVEaWZmTm9GYWlsXCIsXG4gIFwiQGF3cy1jZGsvYXdzLWFwaWdhdGV3YXk6dXNhZ2VQbGFuS2V5T3JkZXJJbnNlbnNpdGl2ZUlkXCIsXG4gIFwiQGF3cy1jZGsvY29yZTplbmFibGVTdGFja05hbWVEdXBsaWNhdGVzXCIsXG4gIFwiQGF3cy1jZGsvY29yZTpzdGFja1JlbGF0aXZlRXhwb3J0c1wiLFxuICBcIkBhd3MtY2RrL2F3cy1lY3ItYXNzZXRzOmRvY2tlcklnbm9yZVN1cHBvcnRcIixcbiAgXCJAYXdzLWNkay9hd3Mtc2VjcmV0c21hbmFnZXI6cGFyc2VPd25lZFNlY3JldE5hbWVcIixcbiAgXCJAYXdzLWNkay9hd3Mta21zOmRlZmF1bHRLZXlQb2xpY2llc1wiLFxuICBcIkBhd3MtY2RrL2F3cy1zMzpncmFudFdyaXRlV2l0aG91dEFjbFwiLFxuICBcIkBhd3MtY2RrL2F3cy1lY3MtcGF0dGVybnM6cmVtb3ZlRGVmYXVsdERlc2lyZWRDb3VudFwiLFxuICBcIkBhd3MtY2RrL2F3cy1yZHM6bG93ZXJjYXNlRGJJZGVudGlmaWVyXCIsXG4gIFwiQGF3cy1jZGsvYXdzLWVmczpkZWZhdWx0RW5jcnlwdGlvbkF0UmVzdFwiLFxuICBcIkBhd3MtY2RrL2F3cy1sYW1iZGE6cmVjb2duaXplVmVyc2lvblByb3BzXCIsXG4gIFwiQGF3cy1jZGsvYXdzLWNsb3VkZnJvbnQ6ZGVmYXVsdFNlY3VyaXR5UG9saWN5VExTdjEuMl8yMDIxXCIsXG5dO1xuXG4vKipcbiAqIFN1ZmZpeCBmb3IgQVdTIExhbWJkYSBoYW5kbGVycy5cbiAqL1xuZXhwb3J0IGNvbnN0IFRZUEVTQ1JJUFRfTEFNQkRBX0VYVCA9IFwiLmxhbWJkYS50c1wiO1xuXG4vKipcbiAqIFN1ZmZpeCBmb3IgQVdTIEVkZ2UgTGFtYmRhIGhhbmRsZXJzLlxuICovXG5leHBvcnQgY29uc3QgVFlQRVNDUklQVF9FREdFX0xBTUJEQV9FWFQgPSBcIi5lZGdlLWxhbWJkYS50c1wiO1xuXG4vKipcbiAqIFN1ZmZpeCBmb3IgQVdTIExhbWJkYSBFeHRlbnNpb25zLlxuICovXG5leHBvcnQgY29uc3QgVFlQRVNDUklQVF9MQU1CREFfRVhURU5TSU9OX0VYVCA9IFwiLmxhbWJkYS1leHRlbnNpb24udHNcIjtcblxuLyoqXG4gKiBDb252ZXJ0cyB0aGUgZ2l2ZW4gcGF0aCBzdHJpbmcgdG8gcG9zaXggaWYgaXQgd2Fzbid0IGFscmVhZHkuXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBjb252ZXJ0VG9Qb3NpeFBhdGgocDogc3RyaW5nKSB7XG4gIHJldHVybiBwLnNwbGl0KHNlcCkuam9pbihwb3NpeC5zZXApO1xufVxuIl19

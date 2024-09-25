@@ -1,0 +1,31 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Parses a projenrc.json file, uses it to generate a corresponding
+ * projenrc.js file, and then run it to synthesize its contents.
+ *
+ * Environment variables:
+ *
+ * - PROJENRC_FILE: (optional) the name of the JSON file to parse from.
+ *   Defaults to `.projenrc.json`.
+ */
+const fs = require("fs");
+const option_hints_1 = require("./option-hints");
+const projects_1 = require("./projects");
+let filename = process.env.PROJENRC_FILE;
+if (!filename || filename == "") {
+    filename = ".projenrc.json";
+}
+const { type, ...json } = JSON.parse(fs.readFileSync(filename, "utf8"));
+if (!type) {
+    throw new Error('projenrc.json requires a "type" field with the fully qualified type name. e.g. projen.web.ReactProject');
+}
+projects_1.Projects.createProject({
+    dir: ".",
+    projectFqn: type,
+    projectOptions: json,
+    optionHints: option_hints_1.InitProjectOptionHints.NONE,
+    synth: true,
+    post: false,
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicnVuLXByb2plbnJjLWpzb24udGFzay5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL3NyYy9ydW4tcHJvamVucmMtanNvbi50YXNrLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUE7Ozs7Ozs7O0dBUUc7QUFDSCx5QkFBeUI7QUFDekIsaURBQXdEO0FBQ3hELHlDQUFzQztBQUV0QyxJQUFJLFFBQVEsR0FBRyxPQUFPLENBQUMsR0FBRyxDQUFDLGFBQWEsQ0FBQztBQUV6QyxJQUFJLENBQUMsUUFBUSxJQUFJLFFBQVEsSUFBSSxFQUFFLEVBQUUsQ0FBQztJQUNoQyxRQUFRLEdBQUcsZ0JBQWdCLENBQUM7QUFDOUIsQ0FBQztBQUVELE1BQU0sRUFBRSxJQUFJLEVBQUUsR0FBRyxJQUFJLEVBQUUsR0FBRyxJQUFJLENBQUMsS0FBSyxDQUFDLEVBQUUsQ0FBQyxZQUFZLENBQUMsUUFBUSxFQUFFLE1BQU0sQ0FBQyxDQUFDLENBQUM7QUFDeEUsSUFBSSxDQUFDLElBQUksRUFBRSxDQUFDO0lBQ1YsTUFBTSxJQUFJLEtBQUssQ0FDYix3R0FBd0csQ0FDekcsQ0FBQztBQUNKLENBQUM7QUFFRCxtQkFBUSxDQUFDLGFBQWEsQ0FBQztJQUNyQixHQUFHLEVBQUUsR0FBRztJQUNSLFVBQVUsRUFBRSxJQUFJO0lBQ2hCLGNBQWMsRUFBRSxJQUFJO0lBQ3BCLFdBQVcsRUFBRSxxQ0FBc0IsQ0FBQyxJQUFJO0lBQ3hDLEtBQUssRUFBRSxJQUFJO0lBQ1gsSUFBSSxFQUFFLEtBQUs7Q0FDWixDQUFDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFBhcnNlcyBhIHByb2plbnJjLmpzb24gZmlsZSwgdXNlcyBpdCB0byBnZW5lcmF0ZSBhIGNvcnJlc3BvbmRpbmdcbiAqIHByb2plbnJjLmpzIGZpbGUsIGFuZCB0aGVuIHJ1biBpdCB0byBzeW50aGVzaXplIGl0cyBjb250ZW50cy5cbiAqXG4gKiBFbnZpcm9ubWVudCB2YXJpYWJsZXM6XG4gKlxuICogLSBQUk9KRU5SQ19GSUxFOiAob3B0aW9uYWwpIHRoZSBuYW1lIG9mIHRoZSBKU09OIGZpbGUgdG8gcGFyc2UgZnJvbS5cbiAqICAgRGVmYXVsdHMgdG8gYC5wcm9qZW5yYy5qc29uYC5cbiAqL1xuaW1wb3J0ICogYXMgZnMgZnJvbSBcImZzXCI7XG5pbXBvcnQgeyBJbml0UHJvamVjdE9wdGlvbkhpbnRzIH0gZnJvbSBcIi4vb3B0aW9uLWhpbnRzXCI7XG5pbXBvcnQgeyBQcm9qZWN0cyB9IGZyb20gXCIuL3Byb2plY3RzXCI7XG5cbmxldCBmaWxlbmFtZSA9IHByb2Nlc3MuZW52LlBST0pFTlJDX0ZJTEU7XG5cbmlmICghZmlsZW5hbWUgfHwgZmlsZW5hbWUgPT0gXCJcIikge1xuICBmaWxlbmFtZSA9IFwiLnByb2plbnJjLmpzb25cIjtcbn1cblxuY29uc3QgeyB0eXBlLCAuLi5qc29uIH0gPSBKU09OLnBhcnNlKGZzLnJlYWRGaWxlU3luYyhmaWxlbmFtZSwgXCJ1dGY4XCIpKTtcbmlmICghdHlwZSkge1xuICB0aHJvdyBuZXcgRXJyb3IoXG4gICAgJ3Byb2plbnJjLmpzb24gcmVxdWlyZXMgYSBcInR5cGVcIiBmaWVsZCB3aXRoIHRoZSBmdWxseSBxdWFsaWZpZWQgdHlwZSBuYW1lLiBlLmcuIHByb2plbi53ZWIuUmVhY3RQcm9qZWN0J1xuICApO1xufVxuXG5Qcm9qZWN0cy5jcmVhdGVQcm9qZWN0KHtcbiAgZGlyOiBcIi5cIixcbiAgcHJvamVjdEZxbjogdHlwZSxcbiAgcHJvamVjdE9wdGlvbnM6IGpzb24sXG4gIG9wdGlvbkhpbnRzOiBJbml0UHJvamVjdE9wdGlvbkhpbnRzLk5PTkUsXG4gIHN5bnRoOiB0cnVlLFxuICBwb3N0OiBmYWxzZSxcbn0pO1xuIl19

@@ -1,0 +1,72 @@
+{
+  "version": "38.0.1",
+  "artifacts": {
+    "ServerlessOpenSearchStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "ServerlessOpenSearchStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "ServerlessOpenSearchStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://546515125053/us-east-2",
+      "properties": {
+        "templateFile": "ServerlessOpenSearchStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "notificationArns": [],
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::546515125053:role/cdk-hnb659fds-deploy-role-546515125053-us-east-2",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::546515125053:role/cdk-hnb659fds-cfn-exec-role-546515125053-us-east-2",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-546515125053-us-east-2/df066f5454a4903f6bf61a358d3808947767d03f54ea85195c1296bf1584520e.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "ServerlessOpenSearchStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::546515125053:role/cdk-hnb659fds-lookup-role-546515125053-us-east-2",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "ServerlessOpenSearchStack.assets"
+      ],
+      "metadata": {
+        "/ServerlessOpenSearchStack/ServerlessOpenSearchCollection": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServerlessOpenSearchCollection"
+          }
+        ],
+        "/ServerlessOpenSearchStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/ServerlessOpenSearchStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/ServerlessOpenSearchStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "ServerlessOpenSearchStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

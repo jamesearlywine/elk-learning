@@ -1,0 +1,34 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Generate an annotated release tag using version and changelog files.
+ *
+ * The tag from the release tag from the release tag file will be used as is.
+ *
+ * The tag annotation message will be set to the content of the provided changelog
+ * file.
+ *
+ * Environment variables:
+ *
+ * - RELEASE_TAG_FILE: Release Tag file containing the bumped release tag
+ * - CHANGELOG_FILE: Changelog to be used for tag annotation
+ *
+ */
+const tag_version_1 = require("./tag-version");
+const changelog = process.env.CHANGELOG;
+const releaseTagFile = process.env.RELEASE_TAG_FILE;
+if (!releaseTagFile) {
+    throw new Error("RELEASE_TAG_FILE is required");
+}
+if (!changelog) {
+    throw new Error("CHANGELOG is required");
+}
+const opts = {
+    changelog,
+    releaseTagFile: releaseTagFile,
+};
+(0, tag_version_1.tag)(process.cwd(), opts).catch((e) => {
+    console.log(e.stack);
+    process.exit(1);
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGFnLXZlcnNpb24udGFzay5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9yZWxlYXNlL3RhZy12ZXJzaW9uLnRhc2sudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTs7Ozs7Ozs7Ozs7OztHQWFHO0FBQ0gsK0NBQWdEO0FBRWhELE1BQU0sU0FBUyxHQUFHLE9BQU8sQ0FBQyxHQUFHLENBQUMsU0FBUyxDQUFDO0FBQ3hDLE1BQU0sY0FBYyxHQUFHLE9BQU8sQ0FBQyxHQUFHLENBQUMsZ0JBQWdCLENBQUM7QUFFcEQsSUFBSSxDQUFDLGNBQWMsRUFBRSxDQUFDO0lBQ3BCLE1BQU0sSUFBSSxLQUFLLENBQUMsOEJBQThCLENBQUMsQ0FBQztBQUNsRCxDQUFDO0FBRUQsSUFBSSxDQUFDLFNBQVMsRUFBRSxDQUFDO0lBQ2YsTUFBTSxJQUFJLEtBQUssQ0FBQyx1QkFBdUIsQ0FBQyxDQUFDO0FBQzNDLENBQUM7QUFFRCxNQUFNLElBQUksR0FBZTtJQUN2QixTQUFTO0lBQ1QsY0FBYyxFQUFFLGNBQWM7Q0FDL0IsQ0FBQztBQUVGLElBQUEsaUJBQUcsRUFBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEVBQUUsSUFBSSxDQUFDLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBUSxFQUFFLEVBQUU7SUFDMUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDckIsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQztBQUNsQixDQUFDLENBQUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogR2VuZXJhdGUgYW4gYW5ub3RhdGVkIHJlbGVhc2UgdGFnIHVzaW5nIHZlcnNpb24gYW5kIGNoYW5nZWxvZyBmaWxlcy5cbiAqXG4gKiBUaGUgdGFnIGZyb20gdGhlIHJlbGVhc2UgdGFnIGZyb20gdGhlIHJlbGVhc2UgdGFnIGZpbGUgd2lsbCBiZSB1c2VkIGFzIGlzLlxuICpcbiAqIFRoZSB0YWcgYW5ub3RhdGlvbiBtZXNzYWdlIHdpbGwgYmUgc2V0IHRvIHRoZSBjb250ZW50IG9mIHRoZSBwcm92aWRlZCBjaGFuZ2Vsb2dcbiAqIGZpbGUuXG4gKlxuICogRW52aXJvbm1lbnQgdmFyaWFibGVzOlxuICpcbiAqIC0gUkVMRUFTRV9UQUdfRklMRTogUmVsZWFzZSBUYWcgZmlsZSBjb250YWluaW5nIHRoZSBidW1wZWQgcmVsZWFzZSB0YWdcbiAqIC0gQ0hBTkdFTE9HX0ZJTEU6IENoYW5nZWxvZyB0byBiZSB1c2VkIGZvciB0YWcgYW5ub3RhdGlvblxuICpcbiAqL1xuaW1wb3J0IHsgdGFnLCBUYWdPcHRpb25zIH0gZnJvbSBcIi4vdGFnLXZlcnNpb25cIjtcblxuY29uc3QgY2hhbmdlbG9nID0gcHJvY2Vzcy5lbnYuQ0hBTkdFTE9HO1xuY29uc3QgcmVsZWFzZVRhZ0ZpbGUgPSBwcm9jZXNzLmVudi5SRUxFQVNFX1RBR19GSUxFO1xuXG5pZiAoIXJlbGVhc2VUYWdGaWxlKSB7XG4gIHRocm93IG5ldyBFcnJvcihcIlJFTEVBU0VfVEFHX0ZJTEUgaXMgcmVxdWlyZWRcIik7XG59XG5cbmlmICghY2hhbmdlbG9nKSB7XG4gIHRocm93IG5ldyBFcnJvcihcIkNIQU5HRUxPRyBpcyByZXF1aXJlZFwiKTtcbn1cblxuY29uc3Qgb3B0czogVGFnT3B0aW9ucyA9IHtcbiAgY2hhbmdlbG9nLFxuICByZWxlYXNlVGFnRmlsZTogcmVsZWFzZVRhZ0ZpbGUsXG59O1xuXG50YWcocHJvY2Vzcy5jd2QoKSwgb3B0cykuY2F0Y2goKGU6IEVycm9yKSA9PiB7XG4gIGNvbnNvbGUubG9nKGUuc3RhY2spO1xuICBwcm9jZXNzLmV4aXQoMSk7XG59KTtcbiJdfQ==

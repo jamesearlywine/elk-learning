@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PERMISSION_BACKUP_FILE = exports.DEFAULT_GITHUB_ACTIONS_USER = exports.BUILD_ARTIFACT_NAME = void 0;
+/**
+ * Name of the artifact produced by the build job. Its contains the entire
+ * working directory.
+ */
+exports.BUILD_ARTIFACT_NAME = "build-artifact";
+/**
+ * Represents the github-actions user.
+ *
+ * Use this when you need to perform a commit as part of your workflow.
+ */
+exports.DEFAULT_GITHUB_ACTIONS_USER = {
+    name: "github-actions",
+    email: "github-actions@github.com",
+};
+/**
+ * Name of the permission back up file to include in the build artifact
+ * to work around a GitHub Action bug that does not preserve file mode
+ * permissions across upload and download actions.
+ *
+ * See {@link https://github.com/actions/upload-artifact/issues/38}
+ */
+exports.PERMISSION_BACKUP_FILE = "permissions-backup.acl";
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uc3RhbnRzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL2dpdGh1Yi9jb25zdGFudHMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBRUE7OztHQUdHO0FBQ1UsUUFBQSxtQkFBbUIsR0FBRyxnQkFBZ0IsQ0FBQztBQUVwRDs7OztHQUlHO0FBQ1UsUUFBQSwyQkFBMkIsR0FBZ0I7SUFDdEQsSUFBSSxFQUFFLGdCQUFnQjtJQUN0QixLQUFLLEVBQUUsMkJBQTJCO0NBQ25DLENBQUM7QUFFRjs7Ozs7O0dBTUc7QUFDVSxRQUFBLHNCQUFzQixHQUFHLHdCQUF3QixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgR2l0SWRlbnRpdHkgfSBmcm9tIFwiLlwiO1xuXG4vKipcbiAqIE5hbWUgb2YgdGhlIGFydGlmYWN0IHByb2R1Y2VkIGJ5IHRoZSBidWlsZCBqb2IuIEl0cyBjb250YWlucyB0aGUgZW50aXJlXG4gKiB3b3JraW5nIGRpcmVjdG9yeS5cbiAqL1xuZXhwb3J0IGNvbnN0IEJVSUxEX0FSVElGQUNUX05BTUUgPSBcImJ1aWxkLWFydGlmYWN0XCI7XG5cbi8qKlxuICogUmVwcmVzZW50cyB0aGUgZ2l0aHViLWFjdGlvbnMgdXNlci5cbiAqXG4gKiBVc2UgdGhpcyB3aGVuIHlvdSBuZWVkIHRvIHBlcmZvcm0gYSBjb21taXQgYXMgcGFydCBvZiB5b3VyIHdvcmtmbG93LlxuICovXG5leHBvcnQgY29uc3QgREVGQVVMVF9HSVRIVUJfQUNUSU9OU19VU0VSOiBHaXRJZGVudGl0eSA9IHtcbiAgbmFtZTogXCJnaXRodWItYWN0aW9uc1wiLFxuICBlbWFpbDogXCJnaXRodWItYWN0aW9uc0BnaXRodWIuY29tXCIsXG59O1xuXG4vKipcbiAqIE5hbWUgb2YgdGhlIHBlcm1pc3Npb24gYmFjayB1cCBmaWxlIHRvIGluY2x1ZGUgaW4gdGhlIGJ1aWxkIGFydGlmYWN0XG4gKiB0byB3b3JrIGFyb3VuZCBhIEdpdEh1YiBBY3Rpb24gYnVnIHRoYXQgZG9lcyBub3QgcHJlc2VydmUgZmlsZSBtb2RlXG4gKiBwZXJtaXNzaW9ucyBhY3Jvc3MgdXBsb2FkIGFuZCBkb3dubG9hZCBhY3Rpb25zLlxuICpcbiAqIFNlZSB7QGxpbmsgaHR0cHM6Ly9naXRodWIuY29tL2FjdGlvbnMvdXBsb2FkLWFydGlmYWN0L2lzc3Vlcy8zOH1cbiAqL1xuZXhwb3J0IGNvbnN0IFBFUk1JU1NJT05fQkFDS1VQX0ZJTEUgPSBcInBlcm1pc3Npb25zLWJhY2t1cC5hY2xcIjtcbiJdfQ==

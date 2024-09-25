@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.workflowNameForProject = workflowNameForProject;
+/**
+ * Generate workflow name with suffix based on if project is subproject or not
+ * @param base name prefix
+ * @param project to which the workflow belongs
+ */
+function workflowNameForProject(base, project) {
+    // Subprojects
+    if (project.parent) {
+        return `${base}_${fileSafeName(project.name)}`;
+    }
+    // root project doesn't get a suffix
+    return base;
+}
+function fileSafeName(name) {
+    return name.replace("@", "").replace(/\//g, "-");
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmFtZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy91dGlsL25hbWUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFPQSx3REFRQztBQWJEOzs7O0dBSUc7QUFDSCxTQUFnQixzQkFBc0IsQ0FBQyxJQUFZLEVBQUUsT0FBZ0I7SUFDbkUsY0FBYztJQUNkLElBQUksT0FBTyxDQUFDLE1BQU0sRUFBRSxDQUFDO1FBQ25CLE9BQU8sR0FBRyxJQUFJLElBQUksWUFBWSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsRUFBRSxDQUFDO0lBQ2pELENBQUM7SUFFRCxvQ0FBb0M7SUFDcEMsT0FBTyxJQUFJLENBQUM7QUFDZCxDQUFDO0FBRUQsU0FBUyxZQUFZLENBQUMsSUFBWTtJQUNoQyxPQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEVBQUUsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxLQUFLLEVBQUUsR0FBRyxDQUFDLENBQUM7QUFDbkQsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFByb2plY3QgfSBmcm9tIFwiLi4vcHJvamVjdFwiO1xuXG4vKipcbiAqIEdlbmVyYXRlIHdvcmtmbG93IG5hbWUgd2l0aCBzdWZmaXggYmFzZWQgb24gaWYgcHJvamVjdCBpcyBzdWJwcm9qZWN0IG9yIG5vdFxuICogQHBhcmFtIGJhc2UgbmFtZSBwcmVmaXhcbiAqIEBwYXJhbSBwcm9qZWN0IHRvIHdoaWNoIHRoZSB3b3JrZmxvdyBiZWxvbmdzXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiB3b3JrZmxvd05hbWVGb3JQcm9qZWN0KGJhc2U6IHN0cmluZywgcHJvamVjdDogUHJvamVjdCk6IHN0cmluZyB7XG4gIC8vIFN1YnByb2plY3RzXG4gIGlmIChwcm9qZWN0LnBhcmVudCkge1xuICAgIHJldHVybiBgJHtiYXNlfV8ke2ZpbGVTYWZlTmFtZShwcm9qZWN0Lm5hbWUpfWA7XG4gIH1cblxuICAvLyByb290IHByb2plY3QgZG9lc24ndCBnZXQgYSBzdWZmaXhcbiAgcmV0dXJuIGJhc2U7XG59XG5cbmZ1bmN0aW9uIGZpbGVTYWZlTmFtZShuYW1lOiBzdHJpbmcpOiBzdHJpbmcge1xuICByZXR1cm4gbmFtZS5yZXBsYWNlKFwiQFwiLCBcIlwiKS5yZXBsYWNlKC9cXC8vZywgXCItXCIpO1xufVxuIl19

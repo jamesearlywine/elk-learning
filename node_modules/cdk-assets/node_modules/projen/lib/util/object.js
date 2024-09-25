@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeNullOrUndefinedProperties = void 0;
+/**
+ *
+ * @param obj Any object
+ * @returns The same object but with no properties whose value is `null` or `undefined`
+ */
+const removeNullOrUndefinedProperties = (obj) => {
+    return Object.fromEntries(Object.entries(obj).filter(([_, value]) => value !== undefined && value !== null));
+};
+exports.removeNullOrUndefinedProperties = removeNullOrUndefinedProperties;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoib2JqZWN0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL3V0aWwvb2JqZWN0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBOzs7O0dBSUc7QUFDSSxNQUFNLCtCQUErQixHQUFHLENBRzdDLEdBQVMsRUFDSCxFQUFFO0lBQ1IsT0FBTyxNQUFNLENBQUMsV0FBVyxDQUN2QixNQUFNLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxDQUFDLE1BQU0sQ0FDeEIsQ0FBQyxDQUFDLENBQUMsRUFBRSxLQUFLLENBQUMsRUFBRSxFQUFFLENBQUMsS0FBSyxLQUFLLFNBQVMsSUFBSSxLQUFLLEtBQUssSUFBSSxDQUN0RCxDQUNNLENBQUM7QUFDWixDQUFDLENBQUM7QUFWVyxRQUFBLCtCQUErQixtQ0FVMUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqXG4gKiBAcGFyYW0gb2JqIEFueSBvYmplY3RcbiAqIEByZXR1cm5zIFRoZSBzYW1lIG9iamVjdCBidXQgd2l0aCBubyBwcm9wZXJ0aWVzIHdob3NlIHZhbHVlIGlzIGBudWxsYCBvciBgdW5kZWZpbmVkYFxuICovXG5leHBvcnQgY29uc3QgcmVtb3ZlTnVsbE9yVW5kZWZpbmVkUHJvcGVydGllcyA9IDxcbiAgVE9iaiBleHRlbmRzIFJlY29yZDxzdHJpbmcsIGFueT5cbj4oXG4gIG9iajogVE9ialxuKTogVE9iaiA9PiB7XG4gIHJldHVybiBPYmplY3QuZnJvbUVudHJpZXMoXG4gICAgT2JqZWN0LmVudHJpZXMob2JqKS5maWx0ZXIoXG4gICAgICAoW18sIHZhbHVlXSkgPT4gdmFsdWUgIT09IHVuZGVmaW5lZCAmJiB2YWx1ZSAhPT0gbnVsbFxuICAgIClcbiAgKSBhcyBUT2JqO1xufTtcbiJdfQ==

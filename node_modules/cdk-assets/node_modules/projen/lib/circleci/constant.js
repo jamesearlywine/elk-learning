@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FilterMainBranchOnly = void 0;
+/**
+ * constant to create a filter to make a job or workflow only run on master
+ */
+exports.FilterMainBranchOnly = {
+    branches: { only: ["master", "main"] },
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uc3RhbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvY2lyY2xlY2kvY29uc3RhbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBRUE7O0dBRUc7QUFDVSxRQUFBLG9CQUFvQixHQUFXO0lBQzFDLFFBQVEsRUFBRSxFQUFFLElBQUksRUFBRSxDQUFDLFFBQVEsRUFBRSxNQUFNLENBQUMsRUFBRTtDQUN2QyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRmlsdGVyIH0gZnJvbSBcIi4vbW9kZWxcIjtcblxuLyoqXG4gKiBjb25zdGFudCB0byBjcmVhdGUgYSBmaWx0ZXIgdG8gbWFrZSBhIGpvYiBvciB3b3JrZmxvdyBvbmx5IHJ1biBvbiBtYXN0ZXJcbiAqL1xuZXhwb3J0IGNvbnN0IEZpbHRlck1haW5CcmFuY2hPbmx5OiBGaWx0ZXIgPSB7XG4gIGJyYW5jaGVzOiB7IG9ubHk6IFtcIm1hc3RlclwiLCBcIm1haW5cIl0gfSxcbn07XG4iXX0=

@@ -1,0 +1,59 @@
+{
+ "Resources": {
+  "OpenSearchServerlessCollection": {
+   "Type": "AWS::OpenSearchServerless::Collection",
+   "Properties": {
+    "Description": "JLE Test Domain",
+    "Name": "jle-test-domain",
+    "StandbyReplicas": "ENABLED",
+    "Type": "SEARCH"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ServerlessOpenSearchCollection/OpenSearchServerlessCollection"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/yWIQQqDQAwA3+J9N1UPpXd/YB9Q1pjS6DYpyWoPxb+7UBgYZnrori20Tfp6xHmNmSf43UvCNdT10A+JUzJ8OdlOlskdhqcMmjNhYZVQayTXzZCOIDoTLH7ZuxtU+mZx5mibFH4TjH+fH+YJMXQAAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "ServerlessOpenSearchCollection/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
