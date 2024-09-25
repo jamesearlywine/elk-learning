@@ -1,0 +1,11 @@
+Serverless deployment is available:
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html
+https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-overview.html
+https://aws.amazon.com/about-aws/whats-new/2024/07/amazon-opensearch-serverless-speed-efficiency-smart-caching/
+https://repost.aws/questions/QU3Poe2lxNSP-PUBW_cQhf0w/question-on-opensearch-serverless-scale-and-pricing
+https://medium.com/@blakeromano/aws-opensearch-serverless-vs-provisioned-b5385d6b20d8
+it looks like we should use AWS::OpenSearchServerless::Collection, deployed in both us-east-1 and us-west-2 stacks,
+with zero-etl integration.
+
+has anyone else at Moodys used Serverless OpenSearch?
+- if so, what iam policy and encryption policy did they use?
