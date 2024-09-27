@@ -19,7 +19,7 @@
         "notificationArns": [],
         "assumeRoleArn": "arn:${AWS::Partition}:iam::546515125053:role/cdk-hnb659fds-deploy-role-546515125053-us-east-2",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::546515125053:role/cdk-hnb659fds-cfn-exec-role-546515125053-us-east-2",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-546515125053-us-east-2/df066f5454a4903f6bf61a358d3808947767d03f54ea85195c1296bf1584520e.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-546515125053-us-east-2/c1653d3ab89ae448aa944d1a40211473372539735e413fb4d2fcd8bf3f5da550.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -35,10 +35,34 @@
         "ServerlessOpenSearchStack.assets"
       ],
       "metadata": {
+        "/ServerlessOpenSearchStack/EncryptionPolicy": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EncryptionPolicy"
+          }
+        ],
+        "/ServerlessOpenSearchStack/NetworkPolicy": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NetworkPolicy"
+          }
+        ],
+        "/ServerlessOpenSearchStack/DataAccessPolicy": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DataAccessPolicy"
+          }
+        ],
         "/ServerlessOpenSearchStack/ServerlessOpenSearchCollection": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ServerlessOpenSearchCollection"
+          }
+        ],
+        "/ServerlessOpenSearchStack/ServerlessOpenSearchCollectionArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServerlessOpenSearchCollectionArn"
           }
         ],
         "/ServerlessOpenSearchStack/CDKMetadata/Default": [

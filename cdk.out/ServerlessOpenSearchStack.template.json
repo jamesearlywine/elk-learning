@@ -1,13 +1,63 @@
 {
  "Resources": {
+  "EncryptionPolicy": {
+   "Type": "AWS::OpenSearchServerless::SecurityPolicy",
+   "Properties": {
+    "Description": "JLE Test OpenSearch Collection Encryption Policy",
+    "Name": "collection-encryption-policy",
+    "Policy": "{\"Rules\":[{\"ResourceType\":\"collection\",\"Resource\":[\"collection/jle-test-collection\"]}],\"AWSOwnedKey\":true}",
+    "Type": "encryption"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ServerlessOpenSearchStack/EncryptionPolicy"
+   }
+  },
+  "NetworkPolicy": {
+   "Type": "AWS::OpenSearchServerless::SecurityPolicy",
+   "Properties": {
+    "Description": "Network policy to allow access from the public internet to the jle-test OpenSearch collection",
+    "Name": "jle-test-network-policy",
+    "Policy": "[{\"Rules\":[{\"ResourceType\":\"collection\",\"Resource\":[\"collection/jle-test-collection\"]}],\"AllowFromPublic\":true}]",
+    "Type": "network"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ServerlessOpenSearchStack/NetworkPolicy"
+   }
+  },
+  "DataAccessPolicy": {
+   "Type": "AWS::OpenSearchServerless::AccessPolicy",
+   "Properties": {
+    "Description": "Data access policy for OpenSearch Serverless collection",
+    "Name": "jle-test-data-policy",
+    "Policy": {
+     "Fn::Join": [
+      "",
+      [
+       "[{\"Description\":\"Access for cfn user\",\"Rules\":[{\"ResourceType\":\"index\",\"Resource\":[\"index/*/*\"],\"Permission\":[\"aoss:*\"]},{\"ResourceType\":\"collection\",\"Resource\":[\"collection/jle-test-collection\"],\"Permission\":[\"aoss:*\"]}],\"Principal\":[\"",
+       {
+        "Fn::Sub": "arn:aws:iam::${AWS::AccountId}:user/JamesEarlywine"
+       },
+       "\"]}]"
+      ]
+     ]
+    },
+    "Type": "data"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ServerlessOpenSearchStack/DataAccessPolicy"
+   }
+  },
   "ServerlessOpenSearchCollection": {
    "Type": "AWS::OpenSearchServerless::Collection",
    "Properties": {
-    "Description": "JLE Test Domain",
-    "Name": "jle-test-domain",
+    "Description": "JLE Test Collection",
+    "Name": "jle-test-collection",
     "StandbyReplicas": "ENABLED",
     "Type": "SEARCH"
    },
+   "DependsOn": [
+    "EncryptionPolicy"
+   ],
    "Metadata": {
     "aws:cdk:path": "ServerlessOpenSearchStack/ServerlessOpenSearchCollection"
    }
@@ -15,10 +65,21 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/yWIQQqDQAwA3+J9N1UPpXd/YB9Q1pjS6DYpyWoPxb+7UBgYZnrori20Tfp6xHmNmSf43UvCNdT10A+JUzJ8OdlOlskdhqcMmjNhYZVQayTXzZCOIDoTLH7ZuxtU+mZx5mibFH4TjH+fH+YJMXQAAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0WJQQqDMBBFz+I+maqL0m3xAC16AEnHKR1NE8kkFhHv3kgXhQ//v/drqM4llIX5iMZh0pYfsHXR4KSy6v1MTsgEfAmFhYIlEdiap+sIU+C43r1lXFU2V8R8/rnx1hJG9m4/8JbinOKxWhKfAtKunB8IRjkt1QVy6mIUZh2Si/wmaH/9Ba8xVDKiAAAA"
    },
    "Metadata": {
     "aws:cdk:path": "ServerlessOpenSearchStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ServerlessOpenSearchCollectionArn": {
+   "Description": "The ARN of the jle-test OpenSearch Collection",
+   "Value": {
+    "Fn::GetAtt": [
+     "ServerlessOpenSearchCollection",
+     "Arn"
+    ]
    }
   }
  },

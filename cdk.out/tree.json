@@ -8,20 +8,90 @@
         "id": "ServerlessOpenSearchStack",
         "path": "ServerlessOpenSearchStack",
         "children": {
+          "EncryptionPolicy": {
+            "id": "EncryptionPolicy",
+            "path": "ServerlessOpenSearchStack/EncryptionPolicy",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::OpenSearchServerless::SecurityPolicy",
+              "aws:cdk:cloudformation:props": {
+                "description": "JLE Test OpenSearch Collection Encryption Policy",
+                "name": "collection-encryption-policy",
+                "policy": "{\"Rules\":[{\"ResourceType\":\"collection\",\"Resource\":[\"collection/jle-test-collection\"]}],\"AWSOwnedKey\":true}",
+                "type": "encryption"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_opensearchserverless.CfnSecurityPolicy",
+              "version": "2.160.0"
+            }
+          },
+          "NetworkPolicy": {
+            "id": "NetworkPolicy",
+            "path": "ServerlessOpenSearchStack/NetworkPolicy",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::OpenSearchServerless::SecurityPolicy",
+              "aws:cdk:cloudformation:props": {
+                "description": "Network policy to allow access from the public internet to the jle-test OpenSearch collection",
+                "name": "jle-test-network-policy",
+                "policy": "[{\"Rules\":[{\"ResourceType\":\"collection\",\"Resource\":[\"collection/jle-test-collection\"]}],\"AllowFromPublic\":true}]",
+                "type": "network"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_opensearchserverless.CfnSecurityPolicy",
+              "version": "2.160.0"
+            }
+          },
+          "DataAccessPolicy": {
+            "id": "DataAccessPolicy",
+            "path": "ServerlessOpenSearchStack/DataAccessPolicy",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::OpenSearchServerless::AccessPolicy",
+              "aws:cdk:cloudformation:props": {
+                "description": "Data access policy for OpenSearch Serverless collection",
+                "name": "jle-test-data-policy",
+                "policy": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "[{\"Description\":\"Access for cfn user\",\"Rules\":[{\"ResourceType\":\"index\",\"Resource\":[\"index/*/*\"],\"Permission\":[\"aoss:*\"]},{\"ResourceType\":\"collection\",\"Resource\":[\"collection/jle-test-collection\"],\"Permission\":[\"aoss:*\"]}],\"Principal\":[\"",
+                      {
+                        "Fn::Sub": "arn:aws:iam::${AWS::AccountId}:user/JamesEarlywine"
+                      },
+                      "\"]}]"
+                    ]
+                  ]
+                },
+                "type": "data"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_opensearchserverless.CfnAccessPolicy",
+              "version": "2.160.0"
+            }
+          },
           "ServerlessOpenSearchCollection": {
             "id": "ServerlessOpenSearchCollection",
             "path": "ServerlessOpenSearchStack/ServerlessOpenSearchCollection",
             "attributes": {
               "aws:cdk:cloudformation:type": "AWS::OpenSearchServerless::Collection",
               "aws:cdk:cloudformation:props": {
-                "description": "JLE Test Domain",
-                "name": "jle-test-domain",
+                "description": "JLE Test Collection",
+                "name": "jle-test-collection",
                 "standbyReplicas": "ENABLED",
                 "type": "SEARCH"
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_opensearchserverless.CfnCollection",
+              "version": "2.160.0"
+            }
+          },
+          "ServerlessOpenSearchCollectionArn": {
+            "id": "ServerlessOpenSearchCollectionArn",
+            "path": "ServerlessOpenSearchStack/ServerlessOpenSearchCollectionArn",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.160.0"
             }
           },

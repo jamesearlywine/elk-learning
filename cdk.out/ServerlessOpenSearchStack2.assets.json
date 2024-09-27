@@ -1,15 +1,15 @@
 {
   "version": "38.0.1",
   "files": {
-    "c1653d3ab89ae448aa944d1a40211473372539735e413fb4d2fcd8bf3f5da550": {
+    "f540a5eb29c52f1a75c1a682d7fe71b999d6ac089200180348bae08ce3527842": {
       "source": {
-        "path": "ServerlessOpenSearchStack.template.json",
+        "path": "ServerlessOpenSearchStack2.template.json",
         "packaging": "file"
       },
       "destinations": {
         "546515125053-us-east-2": {
           "bucketName": "cdk-hnb659fds-assets-546515125053-us-east-2",
-          "objectKey": "c1653d3ab89ae448aa944d1a40211473372539735e413fb4d2fcd8bf3f5da550.json",
+          "objectKey": "f540a5eb29c52f1a75c1a682d7fe71b999d6ac089200180348bae08ce3527842.json",
           "region": "us-east-2",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::546515125053:role/cdk-hnb659fds-file-publishing-role-546515125053-us-east-2"
         }

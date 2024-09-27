@@ -1,0 +1,85 @@
+{
+ "Resources": {
+  "EncryptionPolicy": {
+   "Type": "AWS::OpenSearchServerless::SecurityPolicy",
+   "Properties": {
+    "Description": "JLE Test OpenSearch Collection Encryption Policy",
+    "Name": "collection-encryption-policy",
+    "Policy": "{\"Rules\":[{\"resourceType\":\"collection\",\"resource\":[\"collection/jle-test-collection/*\"],\"effect\":\"allow\",\"actions\":[\"kms:Encrypt\",\"kms:Decrypt\",\"kms:ReEncrypt*\",\"kms:GenerateDataKey*\",\"kms:DescribeKey\"],\"principal\":\"*\"}],\"AWSOwnedKey\":true}",
+    "Type": "encryption"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ServerlessOpenSearchStack2/EncryptionPolicy"
+   }
+  },
+  "ServerlessOpenSearchCollection": {
+   "Type": "AWS::OpenSearchServerless::Collection",
+   "Properties": {
+    "Description": "JLE Test Collection",
+    "Name": "open-search-collection",
+    "StandbyReplicas": "ENABLED",
+    "Type": "SEARCH"
+   },
+   "DependsOn": [
+    "EncryptionPolicy"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ServerlessOpenSearchStack2/ServerlessOpenSearchCollection"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/yWIQQqDMBBFz+I+TtVF6d4DtOgBJB2ndDRNZCaxiHj3RgoP/vuvgfpaQVXYr5Y4zqXjJ+x9tDibnIawkFeygm8lWUkcqcLevnxPmITj9giOcTO5tME5wsjBH+e9p7ikeFpHGpIgHcaHkWDSy1rfINMUkzKXknzkD0H33x+/33z4kgAAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "ServerlessOpenSearchStack2/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ServerlessOpenSearchCollectionArn": {
+   "Description": "The ARN of the jle-test OpenSearch Collection",
+   "Value": {
+    "Fn::GetAtt": [
+     "ServerlessOpenSearchCollection",
+     "Arn"
+    ]
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
