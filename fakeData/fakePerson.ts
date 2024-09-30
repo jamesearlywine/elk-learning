@@ -17,7 +17,6 @@ export const main = () => {
 
   const csvString = [headerRow, ...dataRows.map((row) => row.join(","))].join("\n");
   process.stdout.write(csvString);
-  console.log("hello");
 };
 
 main();
